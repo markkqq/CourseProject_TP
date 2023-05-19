@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <ListBox ItemsSource="{Binding Players}"/>
+        <ListBox ItemsSource="{Binding Players}">
+        </ListBox>
     </StackPanel>
 </UserControl>

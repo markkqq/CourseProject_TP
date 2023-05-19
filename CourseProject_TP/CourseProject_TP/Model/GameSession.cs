@@ -8,9 +8,10 @@ namespace CourseProject_TP.Model
 {
     public class GameSession
     {
-        Club[] Clubs { get; } = new Club[2];
-        DateTime DateTime { get; }
-        Tournament Tournament { get; }
-        Club Winner { get; }
+        public Club[] Clubs { get; } = new Club[2];
+        public DateTime DateTime { get; }
+        public Tournament Tournament { get; }
+        public Club Winner { get; set; }
+        
     }
 }

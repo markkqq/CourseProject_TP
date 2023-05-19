@@ -4,16 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CourseProject_TP.Model;
+using CourseProject_TP.Repositories;
 namespace CourseProject_TP.ViewModel
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
-        public ClubViewModel Club { get; set; }
         public MainWindowViewModel()
         {
-            ClubRepository clubRepository = new();
-            Club club = clubRepository.GetPlayers();
-            Club = new ClubViewModel(club);
+            TournamentRepository tournamentRepository = new();
+            content = new TournamentViewModel(tournamentRepository.GetTournament(),this);
+        }
+        private ViewModelBase content;
+        public ViewModelBase Content
+        {
+            get => content;
+            set
+            {
+                if(content==value)
+                {
+                    return;
+                }
+                content = value;
+                OnPropertyChanged();
+            }
         }
     }
 }

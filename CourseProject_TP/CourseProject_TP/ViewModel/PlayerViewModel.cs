@@ -2,7 +2,7 @@
 
 namespace CourseProject_TP.ViewModel
 {
-    public class PlayerViewModel
+    public class PlayerViewModel : ViewModelBase
     {
         private Player player;
 
@@ -10,9 +10,14 @@ namespace CourseProject_TP.ViewModel
         {
             this.player = player;
         }
-        public string Name
-        {
+        public string Name {
             get => player.Name;
+            set
+            {
+                if(player.Name == value) return;
+                player.Name = value;
+                OnPropertyChanged();
+            }
         }
     }
 }

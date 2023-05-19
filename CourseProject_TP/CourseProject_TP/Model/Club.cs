@@ -11,6 +11,10 @@ namespace CourseProject_TP.Model
         }
         public void AddPlayers(IEnumerable<Player> players)
         {
+            foreach(var player in players)
+            {
+                player.Club = this;
+            }
             Players.AddRange(players);
         }
     }

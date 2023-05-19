@@ -8,9 +8,10 @@ namespace CourseProject_TP.Model
 {
     public class Tournament
     {
-        List<Club> Clubs { get; }
-        List<GameSession> GameSessions { get; }
-        Club Winner { get; }
+        public List<Club> Clubs { get; }
+        public List<GameSession> GameSessions { get; }
+        public Club Winner { get; }
+        public string Name { get; set; }
         public Tournament(List<Club> clubs, List<GameSession> gameSessions, Club winner)
         {
             Clubs = clubs;

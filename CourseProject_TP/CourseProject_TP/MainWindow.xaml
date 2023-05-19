@@ -9,8 +9,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+
         <DataTemplate DataType="{x:Type vm:ClubViewModel}">
-            <views:ClubView DataContext="{Binding Club}"/>
+            <views:ClubView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:PlayerViewModel}">
+            <views:PlayerView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TournamentViewModel}">
+            <views:TournamentView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:GameSessionViewModel}">
+            <views:GameSessionView/>
         </DataTemplate>
     </Window.Resources>
+    <ContentPresenter Content="{Binding Content}"/>
 </Window>

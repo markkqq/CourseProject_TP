@@ -10,11 +10,13 @@ namespace CourseProject_TP.ViewModel
     public class ClubViewModel : ViewModelBase
     {
         Club club;
-        public ClubViewModel(Club club)
+        private readonly MainWindowViewModel mwvm;
+        public ClubViewModel(Club club, MainWindowViewModel mainWindowViewModel)
         {
             this.club = club;
             var playerViewModels = from player in club.Players select new PlayerViewModel(player);
             Players = new ObservableCollection<PlayerViewModel>(playerViewModels);
+            mwvm = mainWindowViewModel;
         }
         public string Name
         {
@@ -25,8 +27,8 @@ namespace CourseProject_TP.ViewModel
                 {
                     return;
                 }
-                OnPropertyChanged();
                 club.Name = value;
+                OnPropertyChanged();
             }
         }
         public ObservableCollection<PlayerViewModel> Players { get; set; }
