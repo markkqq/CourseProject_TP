@@ -53,7 +53,7 @@ namespace CourseProject_TP.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CourseProject_TP;component/view/startview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CourseProject_TP;V1.0.0.0;component/view/startview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\StartView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

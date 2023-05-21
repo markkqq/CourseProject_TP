@@ -53,7 +53,8 @@ namespace CourseProject_TP.View.TournamentViews {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CourseProject_TP;component/view/tournamentviews/tournamentshortview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CourseProject_TP;V1.0.0.0;component/view/tournamentviews/tournamentshortview.xam" +
+                    "l", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\TournamentViews\TournamentShortView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
