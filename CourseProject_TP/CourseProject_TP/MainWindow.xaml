@@ -7,9 +7,11 @@
         xmlns:gsview="clr-namespace:CourseProject_TP.View.GameSessionViews"
         xmlns:cview ="clr-namespace:CourseProject_TP.View.ClubViews"
         xmlns:pview ="clr-namespace:CourseProject_TP.View.PlayerViews"
+        xmlns:tview ="clr-namespace:CourseProject_TP.View.TournamentViews"
         xmlns:vm="clr-namespace:CourseProject_TP.ViewModel"
         xmlns:cvm="clr-namespace:CourseProject_TP.ViewModel.ClubViewModels"
         xmlns:pvm="clr-namespace:CourseProject_TP.ViewModel.PlayerViewModels"
+        xmlns:tvm ="clr-namespace:CourseProject_TP.ViewModel.TournamentViewModels"
         xmlns:local="clr-namespace:CourseProject_TP"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -34,6 +36,10 @@
         <DataTemplate DataType="{x:Type vm:TournamentViewModel}">
             <views:TournamentView/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type tvm:TournamentShortViewModel}">
+            <tview:TournamentShortView/>
+        </DataTemplate>
         
         <DataTemplate DataType="{x:Type vm:GameSessionViewModel}">
             <views:GameSessionView/>
@@ -42,6 +48,12 @@
         <DataTemplate DataType="{x:Type vm:GameSessionShortViewModel}">
             <gsview:GameSessionShortView/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:StartViewModel}">
+            <views:MainView/>
+        </DataTemplate>
+        
+        
     </Window.Resources>
     <DockPanel>
         <Grid DockPanel.Dock="Top" Height="100" Background="Aqua" DataContext="SideUpViewModel"/>

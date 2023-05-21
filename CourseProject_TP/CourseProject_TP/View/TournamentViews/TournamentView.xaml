@@ -12,7 +12,8 @@
             ItemsSource="{Binding GameSessions}"
             SelectedItem="{Binding SelectedGameSession}">
         </ListBox>
-        <Button Content="нажать" Command="{Binding ShowGameSession}"/>
+        <Button Content="Об игре" Command="{Binding ShowGameSession}"/>
+        <Button Content="Назад" Command="{Binding ReturnToPreviousPage}"/>
     </StackPanel>
     
 </UserControl>

@@ -13,9 +13,11 @@ namespace CourseProject_TP.ViewModel
         Tournament _tournament;
         private readonly MainWindowViewModel mwvm;
         private GameSessionShortViewModel selectedGameSession;
-        public TournamentViewModel(Tournament tournament, MainWindowViewModel mainWindowViewModel)
+        private StartViewModel startViewModel;
+        public TournamentViewModel(Tournament tournament, StartViewModel startViewModel, MainWindowViewModel mainWindowViewModel)
         {
             _tournament = tournament;
+            this.startViewModel = startViewModel;
             var gameSessionViewModels = from gameSession in tournament.GameSessions select new GameSessionShortViewModel(gameSession);
             GameSessions = new ObservableCollection<GameSessionShortViewModel>(gameSessionViewModels);
             mwvm = mainWindowViewModel;
@@ -65,6 +67,18 @@ namespace CourseProject_TP.ViewModel
         {
             GameSession gameSession = _tournament.GameSessions.First(x => $"{x.Date.Year}, {x.Date.Month}" == selectedGameSession.Date);
             mwvm.Content = new GameSessionViewModel(gameSession,this,mwvm);
+        }
+
+        public ICommand ReturnToPreviousPage
+        {
+            get => new RelayCommand
+                (
+                    (_) => ReturnImplemention()
+                );
+        }
+        public void ReturnImplemention()
+        {
+            mwvm.Content = startViewModel; 
         }
     }
 }

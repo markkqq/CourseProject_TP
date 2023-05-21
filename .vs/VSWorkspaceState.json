@@ -3,8 +3,9 @@
     "",
     "\\CourseProject_TP",
     "\\CourseProject_TP\\CourseProject_TP",
-    "\\CourseProject_TP\\CourseProject_TP\\ViewModel"
+    "\\CourseProject_TP\\CourseProject_TP\\ViewModel",
+    "\\CourseProject_TP\\CourseProject_TP\\ViewModel\\TournamentViewModels"
   ],
-  "SelectedNode": "\\CourseProject_TP\\CourseProject_TP\\ViewModel\\ViewModelBase.cs",
+  "SelectedNode": "\\CourseProject_TP\\CourseProject_TP\\ViewModel\\TournamentViewModels\\TournamentViewModel.cs",
   "PreviewInSolutionExplorer": false
 }

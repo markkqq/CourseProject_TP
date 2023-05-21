@@ -9,10 +9,11 @@ namespace CourseProject_TP.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
+        const int TOURNAMENTS_COUNT = 5;
         public MainWindowViewModel()
         {
             TournamentRepository tournamentRepository = new();
-            content = new TournamentViewModel(tournamentRepository.GetTournament(),this);
+            content = new StartViewModel(tournamentRepository.GetTournaments(TOURNAMENTS_COUNT), this);
         }
         private ViewModelBase content;
         public ViewModelBase Content

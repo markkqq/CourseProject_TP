@@ -8,7 +8,7 @@ namespace CourseProject_TP.Repositories
 {
     public class TournamentRepository
     {
-        public Tournament GetTournament()
+        private Tournament GetTournament()
         {
             Club club1 = new();
             club1.Name = "Спартак Москва";
@@ -37,6 +37,15 @@ namespace CourseProject_TP.Repositories
             List<GameSession> gameSessions = new() { gameSession1, gameSession2 };
             Tournament tournament = new(clubs, gameSessions, club1) {Name = "Кубок России"};
             return tournament;
+        }
+        public List<Tournament> GetTournaments(int count)
+        {
+            List<Tournament> tournaments = new();
+            for(int i=0;i<count;i++)
+            {
+                tournaments.Add(GetTournament());
+            }
+            return tournaments;
         }
     }
 }
