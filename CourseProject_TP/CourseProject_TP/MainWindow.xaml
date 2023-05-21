@@ -4,7 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:CourseProject_TP.View"
+        xmlns:gsview="clr-namespace:CourseProject_TP.View.GameSessionViews"
+        xmlns:cview ="clr-namespace:CourseProject_TP.View.ClubViews"
+        xmlns:pview ="clr-namespace:CourseProject_TP.View.PlayerViews"
         xmlns:vm="clr-namespace:CourseProject_TP.ViewModel"
+        xmlns:cvm="clr-namespace:CourseProject_TP.ViewModel.ClubViewModels"
+        xmlns:pvm="clr-namespace:CourseProject_TP.ViewModel.PlayerViewModels"
         xmlns:local="clr-namespace:CourseProject_TP"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -14,15 +19,34 @@
             <views:ClubView/>
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type cvm:ClubShortViewModel}">
+            <cview:ClubShortView/>
+        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type vm:PlayerViewModel}">
             <views:PlayerView/>
         </DataTemplate>
+
+        <DataTemplate DataType="{x:Type pvm:PlayerShortViewModel}">
+            <pview:PlayerShortView/>
+        </DataTemplate>
+        
         <DataTemplate DataType="{x:Type vm:TournamentViewModel}">
             <views:TournamentView/>
         </DataTemplate>
+        
         <DataTemplate DataType="{x:Type vm:GameSessionViewModel}">
             <views:GameSessionView/>
         </DataTemplate>
+        
+        <DataTemplate DataType="{x:Type vm:GameSessionShortViewModel}">
+            <gsview:GameSessionShortView/>
+        </DataTemplate>
     </Window.Resources>
-    <ContentPresenter Content="{Binding Content}"/>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Height="100" Background="Aqua" DataContext="SideUpViewModel"/>
+        <Grid DockPanel.Dock="Left" Width="150" Background="Azure" DataContext="SideLeftViewModel"/>
+        <ContentPresenter Content="{Binding Content}"/>
+    </DockPanel>
+    
 </Window>
