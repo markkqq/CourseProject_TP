@@ -8,8 +8,8 @@ namespace CourseProject_TP.Model
 {
     public class GameSession
     {
-        public Club[] Clubs { get; } = new Club[2];
-        public DateTime DateTime { get; }
+        public List<Club> Clubs { get; set; } = new List<Club>(2);
+        public DateTime Date { get; set; }
         public Tournament Tournament { get; }
         public Club Winner { get; set; }
         

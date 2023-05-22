@@ -7,16 +7,31 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="View\ClubView.xaml.cs">
+    <Compile Update="View\ClubViews\ClubShortView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\GameSessionView.xaml.cs">
+    <Compile Update="View\ClubViews\ClubView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\PlayerView.xaml.cs">
+    <Compile Update="View\GameSessionViews\GameSessionShortView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\TournamentView.xaml.cs">
+    <Compile Update="View\GameSessionViews\GameSessionView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\StartView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PlayerViews\PlayerShortView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\PlayerViews\PlayerView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\TournamentViews\TournamentShortView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\TournamentViews\TournamentView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -24,16 +39,31 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ClubView.xaml">
+    <Page Update="View\ClubViews\ClubShortView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\GameSessionView.xaml">
+    <Page Update="View\ClubViews\ClubView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\PlayerView.xaml">
+    <Page Update="View\GameSessionViews\GameSessionShortView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\TournamentView.xaml">
+    <Page Update="View\GameSessionViews\GameSessionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\StartView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PlayerViews\PlayerShortView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\PlayerViews\PlayerView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TournamentViews\TournamentShortView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\TournamentViews\TournamentView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
