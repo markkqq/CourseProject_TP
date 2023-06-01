@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\CourseProject_TP\App.xaml
-10-1833795818
+7-478773752
 
-34-789108990
-193-1891726104
-MainWindow.xaml;View\ClubViews\ClubShortView.xaml;View\ClubViews\ClubView.xaml;View\GameSessionViews\GameSessionShortView.xaml;View\GameSessionViews\GameSessionView.xaml;View\PlayerViews\PlayerShortView.xaml;View\PlayerViews\PlayerView.xaml;View\StartView.xaml;View\TournamentViews\TournamentShortView.xaml;View\TournamentViews\TournamentView.xaml;
+221943045428
+2261103034770
+MainWindow.xaml;View\ClubView.xaml;View\GameSessionView.xaml;View\PlayerView.xaml;View\SideUpView.xaml;View\StartView.xaml;View\TournamentView.xaml;
 
 True
 

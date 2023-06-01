@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CourseProject_TP.Model;
+using CourseProject_TP.Logic.Model;
 namespace CourseProject_TP
 {
     public class ClubRepository

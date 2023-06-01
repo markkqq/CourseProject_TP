@@ -1,0 +1,11 @@
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\bin\Debug\net5.0-windows\Logic.deps.json
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\bin\Debug\net5.0-windows\Logic.dll
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\bin\Debug\net5.0-windows\ref\Logic.dll
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\bin\Debug\net5.0-windows\Logic.pdb
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\obj\Debug\net5.0-windows\Logic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\obj\Debug\net5.0-windows\Logic.AssemblyInfoInputs.cache
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\obj\Debug\net5.0-windows\Logic.AssemblyInfo.cs
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\obj\Debug\net5.0-windows\Logic.csproj.CoreCompileInputs.cache
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\obj\Debug\net5.0-windows\Logic.dll
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\obj\Debug\net5.0-windows\ref\Logic.dll
+C:\Users\Андрей\source\repos\CourseProject_TP1\CourseProject_TP\Logic\obj\Debug\net5.0-windows\Logic.pdb
