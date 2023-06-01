@@ -4,14 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:CourseProject_TP.View"
-        xmlns:gsview="clr-namespace:CourseProject_TP.View.GameSessionViews"
-        xmlns:cview ="clr-namespace:CourseProject_TP.View.ClubViews"
-        xmlns:pview ="clr-namespace:CourseProject_TP.View.PlayerViews"
-        xmlns:tview ="clr-namespace:CourseProject_TP.View.TournamentViews"
         xmlns:vm="clr-namespace:CourseProject_TP.ViewModel"
-        xmlns:cvm="clr-namespace:CourseProject_TP.ViewModel.ClubViewModels"
-        xmlns:pvm="clr-namespace:CourseProject_TP.ViewModel.PlayerViewModels"
-        xmlns:tvm ="clr-namespace:CourseProject_TP.ViewModel.TournamentViewModels"
         xmlns:local="clr-namespace:CourseProject_TP"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
@@ -20,35 +13,19 @@
         <DataTemplate DataType="{x:Type vm:ClubViewModel}">
             <views:ClubView/>
         </DataTemplate>
-
-        <DataTemplate DataType="{x:Type cvm:ClubShortViewModel}">
-            <cview:ClubShortView/>
-        </DataTemplate>
-        
+         
         <DataTemplate DataType="{x:Type vm:PlayerViewModel}">
             <views:PlayerView/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type pvm:PlayerShortViewModel}">
-            <pview:PlayerShortView/>
-        </DataTemplate>
-        
         <DataTemplate DataType="{x:Type vm:TournamentViewModel}">
             <views:TournamentView/>
         </DataTemplate>
 
-        <DataTemplate DataType="{x:Type tvm:TournamentShortViewModel}">
-            <tview:TournamentShortView/>
-        </DataTemplate>
-        
         <DataTemplate DataType="{x:Type vm:GameSessionViewModel}">
             <views:GameSessionView/>
         </DataTemplate>
         
-        <DataTemplate DataType="{x:Type vm:GameSessionShortViewModel}">
-            <gsview:GameSessionShortView/>
-        </DataTemplate>
-
         <DataTemplate DataType="{x:Type vm:StartViewModel}">
             <views:MainView/>
         </DataTemplate>

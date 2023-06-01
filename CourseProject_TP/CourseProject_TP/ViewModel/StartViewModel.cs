@@ -5,23 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using CourseProject_TP.Model;
-using CourseProject_TP.ViewModel.TournamentViewModels;
+using CourseProject_TP.Logic.Model;
 namespace CourseProject_TP.ViewModel
 {
     public class StartViewModel : ViewModelBase
     {
         private MainWindowViewModel mwvm;
-        private TournamentShortViewModel selectedTournament;
+        private TournamentViewModel selectedTournament;
         private List<Tournament> _tournaments;
         public StartViewModel(List<Tournament> tournaments, MainWindowViewModel mwvm)
         {
             this.mwvm = mwvm;
             _tournaments = tournaments;
-            var tournamentViewModels = from tournament in tournaments select new TournamentShortViewModel(tournament, mwvm);
-            Tournaments = new ObservableCollection<TournamentShortViewModel>(tournamentViewModels);
+            var tournamentViewModels = from tournament in tournaments select new TournamentViewModel(tournament, this ,mwvm);
+            Tournaments = new ObservableCollection<TournamentViewModel>(tournamentViewModels);
         }
-        public ObservableCollection<TournamentShortViewModel> Tournaments { get; set; }
+        public ObservableCollection<TournamentViewModel> Tournaments { get; set; }
 
         public ICommand ShowTournament
         {
@@ -34,7 +33,7 @@ namespace CourseProject_TP.ViewModel
                     );
             }
         }
-        public TournamentShortViewModel SelectedTournament
+        public TournamentViewModel SelectedTournament
         {
             get => selectedTournament;
             set 
