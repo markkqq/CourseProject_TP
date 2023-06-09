@@ -29,7 +29,10 @@
         <DataTemplate DataType="{x:Type vm:StartViewModel}">
             <views:MainView/>
         </DataTemplate>
-        
+
+        <DataTemplate DataType="{x:Type vm:OpeningViewModel}">
+            <views:OpeningView/>
+        </DataTemplate>
         
     </Window.Resources>
     <DockPanel>

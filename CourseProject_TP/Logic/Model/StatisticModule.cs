@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseProject_TP.Logic.Model
+namespace Logic.Model
 {
     public class StatisticModule
     {

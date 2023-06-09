@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
-using CourseProject_TP.Logic.Model;
+using Logic.Model;
 namespace CourseProject_TP.ViewModel
 {
     public class TournamentViewModel : ViewModelBase
@@ -65,7 +65,7 @@ namespace CourseProject_TP.ViewModel
 
         private void ShowGameSessionImplemention()
         {
-            GameSession gameSession = _tournament.GameSessions.First(x => $"{x.Date.Year} год, месяц {x.Date.Month}." == SelectedGameSession.Date);
+            GameSession gameSession = _tournament.GameSessions.First(x => $"Команда ||{x.Clubs[0].Name}|| против Команда ||{x.Clubs[1].Name}||" == SelectedGameSession.Opponents);
             mwvm.Content = new GameSessionViewModel(gameSession,this,mwvm);
         }
 

@@ -4,19 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseProject_TP.Logic.Model
+namespace Logic.Model
 {
     public class Tournament
     {
-        public List<Club> Clubs { get; }
-        public List<GameSession> GameSessions { get; }
-        public Club Winner { get; }
+        public List<Club> Clubs { get; set; }
+        public List<GameSession> GameSessions { get; set; }
         public string Name { get; set; }
-        public Tournament(List<Club> clubs, List<GameSession> gameSessions, Club winner)
+        public Tournament()
         {
-            Clubs = clubs;
-            GameSessions = gameSessions;
-            Winner = winner;
+
+        }
+        public void AddGameSession(GameSession gameSession)
+        {
+            gameSession.Tournament = this;
+            GameSessions.Add(gameSession);
         }
     }
 }
