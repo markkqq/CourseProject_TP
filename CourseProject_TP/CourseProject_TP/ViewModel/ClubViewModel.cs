@@ -1,9 +1,9 @@
-﻿using System;
+﻿using System;//using ЛЮБЛЮ МИЯГИ И ЭНДШПИЛЬ
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CourseProject_TP.Logic.Model;
+using Logic.Model;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 

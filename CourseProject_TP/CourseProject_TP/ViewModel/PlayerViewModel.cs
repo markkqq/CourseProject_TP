@@ -1,4 +1,4 @@
-﻿using CourseProject_TP.Logic.Model;
+﻿using Logic.Model;  
 using System.Windows.Input;
 
 namespace CourseProject_TP.ViewModel

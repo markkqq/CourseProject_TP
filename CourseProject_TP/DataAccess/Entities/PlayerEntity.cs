@@ -1,7 +1,31 @@
-﻿namespace CourseProject_TP.DataAccess.Entities
+﻿using Logic.Model;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+#nullable disable
+
+namespace DataAccess.Entities
 {
-    public class PlayerEntity
+    [Table("Player")]
+    public partial class PlayerEntity
     {
-        public int ID { get; set; }
+        public PlayerEntity()
+        {
+
+        }
+        public PlayerEntity(Player player)
+        {
+            Name = player.Name;
+            Surname = player.Surname;
+        }
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+
+
     }
 }

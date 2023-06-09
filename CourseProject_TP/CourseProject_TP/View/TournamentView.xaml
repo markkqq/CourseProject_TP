@@ -13,7 +13,7 @@
             SelectedItem="{Binding SelectedGameSession}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Date}"/>
+                    <TextBlock Text="{Binding Opponents}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

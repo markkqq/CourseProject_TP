@@ -1,7 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
-using CourseProject_TP.Logic.Model;
+using Logic.Model;
 using System.Linq;
 using System.Windows.Input;
 
@@ -22,37 +21,20 @@ namespace CourseProject_TP.ViewModel
             mwvm = mainWindowViewModel;
         }
         
-        public string Winner 
-        {
-            get => $"Победитель - {gameSession.Winner.Name}";
-            set
-            {
-                if (gameSession.Winner.Name == value) return;
-
-                gameSession.Winner.Name = value;
-                OnPropertyChanged();
-            }
-        }
-        public string Date
-        {
-            get => $"{gameSession.Date.Year} год, месяц {gameSession.Date.Month}.";
-            
-        }
         public string Opponents
         {
-            get => $" {gameSession.Clubs[0].Name} - {gameSession.Clubs[1].Name}.";
-
+            get => $"Команда ||{gameSession.Clubs[0].Name}|| против Команда ||{gameSession.Clubs[1].Name}||";
         }
         public ObservableCollection<ClubViewModel> Clubs { get; set; }
 
-        public ICommand ShowClub
+        public ICommand ShowParticipant
         {
             get
             {
                 return new RelayCommand
                     (
-                        (_) => ShowClubImplemention(),
-                        (_) => CanShowClub()
+                        (_) => ShowParticipantImplemention(),
+                        (_) => CanShowParticipant()
                     );
             }
         }
@@ -66,12 +48,12 @@ namespace CourseProject_TP.ViewModel
                 OnPropertyChanged();
             }
         }
-        private bool CanShowClub()
+        private bool CanShowParticipant()
         {
             return selectedClub != null;
         }
 
-        private void ShowClubImplemention()
+        private void ShowParticipantImplemention()
         {
             Club club = gameSession.Clubs.First(x => x.Name == selectedClub.Name);
             mwvm.Content = new ClubViewModel(club, this, mwvm);

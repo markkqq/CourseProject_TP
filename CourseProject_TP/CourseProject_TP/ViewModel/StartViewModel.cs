@@ -1,11 +1,13 @@
-﻿using System;
+﻿//using ЛЮБЛЮ КАСПИЙСКИЙ ГРУС
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using CourseProject_TP.Logic.Model;
+using Logic;
+using Logic.Model;
 namespace CourseProject_TP.ViewModel
 {
     public class StartViewModel : ViewModelBase
@@ -13,10 +15,13 @@ namespace CourseProject_TP.ViewModel
         private MainWindowViewModel mwvm;
         private TournamentViewModel selectedTournament;
         private List<Tournament> _tournaments;
+        IRepository<Club> _repository;
         public StartViewModel(List<Tournament> tournaments, MainWindowViewModel mwvm)
         {
             this.mwvm = mwvm;
             _tournaments = tournaments;
+
+            
             var tournamentViewModels = from tournament in tournaments select new TournamentViewModel(tournament, this ,mwvm);
             Tournaments = new ObservableCollection<TournamentViewModel>(tournamentViewModels);
         }

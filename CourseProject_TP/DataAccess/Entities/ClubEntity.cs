@@ -1,11 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using Logic.Model;
+#nullable disable
 
-namespace CourseProject_TP.DataAccess.Entities
+namespace DataAccess.Entities
 {
-    public class ClubEntity
+    [Table("Club")]
+    public partial class ClubEntity
     {
-        public List<PlayerEntity> Players { get; set; } = new();
+        public ClubEntity()
+        {
+
+        }
+        public ClubEntity(Club item)
+        {
+            Players = (from player in item.Players select new PlayerEntity(player)).ToList();
+        }
+
+
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
-        public int ID { get; set; }
+
+        public ICollection<PlayerEntity> Players { get; set; }
     }
 }
