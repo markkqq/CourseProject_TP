@@ -9,7 +9,7 @@ using CourseProject_TP.ViewModel;
 using DataAccess;
 using DataAccess.Repositories;
 using Logic.Model;
-
+using DataAccess.Entities;
 namespace CourseProject_TP
 {
     /// <summary>
@@ -20,35 +20,49 @@ namespace CourseProject_TP
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-
+            
             using(FootballHelperDbContext db = new())
             {
-                PlayerRepository playerRepository = new();
-                GameSessionRepository gameSessionRepository = new();
-                ClubRepository clubRepository = new();
-                TournamentRepository tournamentRepository = new();
-
-                foreach(var t in Generator.GenerateTournaments())
+                if (db.Tournaments.Count() == 0)
                 {
-                    foreach(var g in Generator.GenerateGameSessions())
+                    PlayerRepository playerRepository = new();
+                    GameSessionRepository gameSessionRepository = new();
+                    ClubRepository clubRepository = new();
+                    TournamentRepository tournamentRepository = new();
+
+                    foreach (var t in Generator.GenerateTournaments())
                     {
-                        t.AddGameSession(g);
-                        foreach(var cl in Generator.GenerateClubs())
+                        if (!db.Tournaments.Contains(new TournamentEntity(t)))
                         {
-                            List<Player> players = Generator.GeneratePlayers();
-                            foreach(var p in players)
+                            foreach (var g in Generator.GenerateGameSessions())
                             {
-                                p.Club = cl;
-                                playerRepository.Save(p);
+                                foreach (var cl in Generator.GenerateClubs())
+                                {
+                                    if (!db.Clubs.Contains(new ClubEntity(cl)))
+                                    {
+                                        List<Player> players = Generator.GeneratePlayers();
+                                        foreach (var p in players)
+                                        {
+                                            p.Club = cl;
+                                            playerRepository.Save(p);
+                                        }
+
+                                        cl.AddPlayers(players);
+
+                                        clubRepository.Save(cl);
+
+                                        g.Clubs.Add(cl);
+                                    }
+
+                                }
+                                gameSessionRepository.Save(g);
+                                t.AddGameSession(g);
                             }
-                            cl.AddPlayers(players);
-                            
+                            tournamentRepository.Save(t);
                         }
                     }
                 }
-                    
             }
-
             MainWindow window = new();
             window.DataContext = new MainWindowViewModel();
             window.Show();

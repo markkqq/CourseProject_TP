@@ -21,6 +21,7 @@
             Content="Показать информацию об игроке"
             Command="{Binding ShowPlayer}"
             />
+        <Button Content="Добавить игрока" Command="{Binding AddPlayer}"/>
         <Button
             Content="Назад"
             Command="{Binding ReturnToPreviousPage}"

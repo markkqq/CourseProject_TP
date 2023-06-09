@@ -15,13 +15,10 @@ namespace CourseProject_TP.ViewModel
         private MainWindowViewModel mwvm;
         private TournamentViewModel selectedTournament;
         private List<Tournament> _tournaments;
-        IRepository<Club> _repository;
         public StartViewModel(List<Tournament> tournaments, MainWindowViewModel mwvm)
         {
             this.mwvm = mwvm;
             _tournaments = tournaments;
-
-            
             var tournamentViewModels = from tournament in tournaments select new TournamentViewModel(tournament, this ,mwvm);
             Tournaments = new ObservableCollection<TournamentViewModel>(tournamentViewModels);
         }

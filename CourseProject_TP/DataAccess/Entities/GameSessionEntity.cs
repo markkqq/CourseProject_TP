@@ -17,12 +17,13 @@ namespace DataAccess.Entities
         }
         public GameSessionEntity(GameSession gameSession)
         {
+
             FirstClubResult = gameSession.FirstClubResult;
             SecondClubResult = gameSession.SecondClubResult;
+            Clubs = (from club in gameSession.Clubs select new ClubEntity(club)).ToList();
         }
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
-        
         [Required]
         public int FirstClubResult { get; set; }
         [Required]

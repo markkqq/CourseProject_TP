@@ -34,10 +34,16 @@
             <views:OpeningView/>
         </DataTemplate>
         
+        <DataTemplate DataType="{x:Type vm:AddingPlayerViewModel}">
+            <views:AddingPlayerView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ErrorViewModel}">
+            <views:ErrorView/>
+        </DataTemplate>
+        
     </Window.Resources>
     <DockPanel>
-        <Grid DockPanel.Dock="Top" Height="100" Background="Aqua" DataContext="SideUpViewModel"/>
-        <Grid DockPanel.Dock="Left" Width="150" Background="Azure" DataContext="SideLeftViewModel"/>
         <ContentPresenter Content="{Binding Content}"/>
     </DockPanel>
     

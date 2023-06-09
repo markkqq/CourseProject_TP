@@ -29,7 +29,7 @@ namespace DataAccess
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=;Database=FootballHelperFinal;TrustServerCertificate=True;");
+                optionsBuilder.UseSqlServer(@"Server=BBI6JI9G0K\SQLEXPRESS;Database=FootballHelperFinal;Trusted_Connection=True;TrustServerCertificate=True;");
             }
         }
 

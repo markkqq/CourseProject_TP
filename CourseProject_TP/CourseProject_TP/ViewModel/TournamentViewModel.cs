@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using Logic.Model;
+using DataAccess.Repositories;
+
 namespace CourseProject_TP.ViewModel
 {
     public class TournamentViewModel : ViewModelBase

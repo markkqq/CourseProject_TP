@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(FootballHelperDbContext))]
-    [Migration("20230607171328_Initial")]
-    partial class Initial
+    [Migration("20230609152421_1")]
+    partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,11 +28,16 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int?>("GameSessionEntityId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GameSessionEntityId");
 
                     b.ToTable("Club");
                 });
@@ -50,41 +55,14 @@ namespace DataAccess.Migrations
                     b.Property<int>("SecondClubResult")
                         .HasColumnType("int");
 
-                    b.Property<int>("TournamentId")
+                    b.Property<int?>("TournamentEntityId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TournamentId");
+                    b.HasIndex("TournamentEntityId");
 
                     b.ToTable("GameSession");
-                });
-
-            modelBuilder.Entity("DataAccess.Entities.ParticipantEntity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("ClubId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("GameSessionEntityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TournamentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClubId");
-
-                    b.HasIndex("GameSessionEntityId");
-
-                    b.HasIndex("TournamentId");
-
-                    b.ToTable("Participant");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.PlayerEntity", b =>
@@ -94,10 +72,11 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("ClubId")
+                    b.Property<int?>("ClubEntityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
@@ -105,7 +84,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClubId");
+                    b.HasIndex("ClubEntityId");
 
                     b.ToTable("Player");
                 });
@@ -126,49 +105,25 @@ namespace DataAccess.Migrations
                     b.ToTable("Tournament");
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.GameSessionEntity", b =>
+            modelBuilder.Entity("DataAccess.Entities.ClubEntity", b =>
                 {
-                    b.HasOne("DataAccess.Entities.TournamentEntity", "Tournament")
-                        .WithMany("GameSessions")
-                        .HasForeignKey("TournamentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tournament");
+                    b.HasOne("DataAccess.Entities.GameSessionEntity", null)
+                        .WithMany("Clubs")
+                        .HasForeignKey("GameSessionEntityId");
                 });
 
-            modelBuilder.Entity("DataAccess.Entities.ParticipantEntity", b =>
+            modelBuilder.Entity("DataAccess.Entities.GameSessionEntity", b =>
                 {
-                    b.HasOne("DataAccess.Entities.ClubEntity", "Club")
-                        .WithMany()
-                        .HasForeignKey("ClubId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataAccess.Entities.GameSessionEntity", null)
-                        .WithMany("Participants")
-                        .HasForeignKey("GameSessionEntityId");
-
-                    b.HasOne("DataAccess.Entities.TournamentEntity", "Tournament")
-                        .WithMany("Participants")
-                        .HasForeignKey("TournamentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Club");
-
-                    b.Navigation("Tournament");
+                    b.HasOne("DataAccess.Entities.TournamentEntity", null)
+                        .WithMany("GameSessions")
+                        .HasForeignKey("TournamentEntityId");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.PlayerEntity", b =>
                 {
-                    b.HasOne("DataAccess.Entities.ClubEntity", "Club")
+                    b.HasOne("DataAccess.Entities.ClubEntity", null)
                         .WithMany("Players")
-                        .HasForeignKey("ClubId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Club");
+                        .HasForeignKey("ClubEntityId");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.ClubEntity", b =>
@@ -178,14 +133,12 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("DataAccess.Entities.GameSessionEntity", b =>
                 {
-                    b.Navigation("Participants");
+                    b.Navigation("Clubs");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.TournamentEntity", b =>
                 {
                     b.Navigation("GameSessions");
-
-                    b.Navigation("Participants");
                 });
 #pragma warning restore 612, 618
         }

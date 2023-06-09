@@ -8,8 +8,8 @@ namespace Logic.Model
 {
     public class Tournament
     {
-        public List<Club> Clubs { get; set; }
-        public List<GameSession> GameSessions { get; set; }
+        public List<Club> Clubs { get; set; } = new List<Club>();
+        public List<GameSession> GameSessions { get; set; } = new List<GameSession>();
         public string Name { get; set; }
         public Tournament()
         {

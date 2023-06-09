@@ -12,8 +12,9 @@ namespace DataAccess
         public static int TournamentsCount { get; } = 10;
         public static int GameSessionsCount { get; } = 10;
         static int PlayersInClubCount { get; } = 15;
-        public static int ClubsCount { get; } = 10;
+        public static int ClubsCount { get; } = 2;
         public static int MaxScoreCount { get; } = 5;
+        public static int GameSessionID { get; set; } = 0;
         public static List<Tournament> GenerateTournaments()
         {
             List<Tournament> tournaments = new();
@@ -77,6 +78,8 @@ namespace DataAccess
                 GameSession gameSession = new();
                 gameSession.FirstClubResult = r1.Next(0,MaxScoreCount);
                 gameSession.SecondClubResult = r2.Next(0, MaxScoreCount);
+                gameSession.Id = GameSessionID;
+                GameSessionID++;
                 gameSessions.Add(gameSession);
             }
             return gameSessions;

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Logic.Model;
 using System.Linq;
 using System.Windows.Input;
+using DataAccess.Repositories;
 
 namespace CourseProject_TP.ViewModel
 {
@@ -25,16 +26,22 @@ namespace CourseProject_TP.ViewModel
         {
             get => $"Команда ||{gameSession.Clubs[0].Name}|| против Команда ||{gameSession.Clubs[1].Name}||";
         }
+
+        public string Result
+        {
+            get => $"Результат игры - {gameSession.FirstClubResult}:{gameSession.SecondClubResult}";
+        }
+
         public ObservableCollection<ClubViewModel> Clubs { get; set; }
 
-        public ICommand ShowParticipant
+        public ICommand ShowClub
         {
             get
             {
                 return new RelayCommand
                     (
-                        (_) => ShowParticipantImplemention(),
-                        (_) => CanShowParticipant()
+                        (_) => ShowClubImplemention(),
+                        (_) => CanShowClub()
                     );
             }
         }
@@ -48,12 +55,12 @@ namespace CourseProject_TP.ViewModel
                 OnPropertyChanged();
             }
         }
-        private bool CanShowParticipant()
+        private bool CanShowClub()
         {
             return selectedClub != null;
         }
 
-        private void ShowParticipantImplemention()
+        private void ShowClubImplemention()
         {
             Club club = gameSession.Clubs.First(x => x.Name == selectedClub.Name);
             mwvm.Content = new ClubViewModel(club, this, mwvm);
@@ -66,7 +73,28 @@ namespace CourseProject_TP.ViewModel
                 (_) => ReturnImplemention()
                 );
         }
+        public string Winner
+        {
+            get
+            {
+                if (gameSession.FirstClubResult > gameSession.SecondClubResult)
+                {
+                    return $"Победила команда {gameSession.Clubs[0].Name}";
+                }
+                else if(gameSession.FirstClubResult < gameSession.SecondClubResult)
+                {
+                    return $"Победила команда {gameSession.Clubs[1].Name}";
+                }
+                else
+                {
+                    return "Ничья";
+                }
+            }
+            set
+            {
 
+            }
+        }
         private void ReturnImplemention()
         {
             mwvm.Content = tournamentViewModel;

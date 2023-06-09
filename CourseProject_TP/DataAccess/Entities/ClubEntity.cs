@@ -17,6 +17,7 @@ namespace DataAccess.Entities
         }
         public ClubEntity(Club item)
         {
+            Name = item.Name;
             Players = (from player in item.Players select new PlayerEntity(player)).ToList();
         }
 

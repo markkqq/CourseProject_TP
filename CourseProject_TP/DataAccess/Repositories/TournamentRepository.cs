@@ -20,7 +20,27 @@ namespace DataAccess.Repositories
             List<Tournament> tournaments = new();
             using (FootballHelperDbContext db = new())
             {
-                
+                var list = db.Tournaments.Include(x => x.GameSessions).ThenInclude(y => y.Clubs).ThenInclude(z => z.Players);
+                tournaments = (from tournament in list select new Tournament()
+                {
+                    Name = tournament.Name,
+                    GameSessions = (from gamesession in tournament.GameSessions select new GameSession()
+                    {
+                        Clubs = (from club in gamesession.Clubs select new Club(club.Name) 
+                        {
+                            Players = (from player in club.Players select new Player(player.Name, player.Surname) {
+                             Club = new Club(club.Name)
+                            })
+                            .ToList()
+                        }
+                        
+                        ).ToList()
+                        ,
+                        FirstClubResult = gamesession.FirstClubResult,
+                        SecondClubResult = gamesession.SecondClubResult,
+                        Id = gamesession.Id
+                    }).ToList()
+                }).ToList();
             }
             return tournaments;
         }
@@ -29,9 +49,27 @@ namespace DataAccess.Repositories
         {
             using(FootballHelperDbContext db = new())
             {
-
-                return null;
+                foreach(var t in db.Tournaments)
+                {
+                    if(t.Id == id)
+                    {
+                        return new Tournament()
+                        {
+                            Name = t.Name,
+                            GameSessions = (from gamesession in t.GameSessions
+                                            select new GameSession()
+                                            {
+                                                Clubs = (from club in gamesession.Clubs
+                                                         select new Club(club.Name)
+                                                         {
+                                                             Players = (from player in club.Players select new Player(player.Name, player.Surname)).ToList()
+                                                         }).ToList()
+                                            }).ToList()
+                        };
+                    }
+                }
             }
+            return null;
         }
         public void Save(Tournament item)
         {

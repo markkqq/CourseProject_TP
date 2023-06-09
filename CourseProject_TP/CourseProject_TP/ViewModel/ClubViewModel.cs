@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Logic.Model;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using DataAccess.Repositories;
 
 namespace CourseProject_TP.ViewModel
 {
@@ -19,6 +20,7 @@ namespace CourseProject_TP.ViewModel
         {
             this.club = club;
             this.gameSessionViewModel = gameSessionViewModel;
+            PlayerRepository playerRepository = new();
             var playerViewModels = from player in club.Players select new PlayerViewModel(player,this,mainWindowViewModel);
             Players = new ObservableCollection<PlayerViewModel>(playerViewModels);
             mwvm = mainWindowViewModel;
@@ -70,6 +72,18 @@ namespace CourseProject_TP.ViewModel
             Player player = club.Players.First(x => $"{x.Name} {x.Surname}" == SelectedPlayer.PersonDetails);
             mwvm.Content = new PlayerViewModel(player,this, mwvm);
         }
+        public ICommand AddPlayer
+        {
+            get => new RelayCommand(
+                (_) => AddPlayerImplemention()
+                );
+        }
+
+        private void AddPlayerImplemention()
+        {
+            mwvm.Content = new AddingPlayerViewModel(club, gameSessionViewModel, mwvm);
+        }
+
         public ICommand ReturnToPreviousPage
         {
             get

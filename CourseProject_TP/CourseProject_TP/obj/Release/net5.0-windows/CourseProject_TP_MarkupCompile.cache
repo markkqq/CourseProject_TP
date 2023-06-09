@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-c:\users\андрей\source\repos\courseproject_tp1\courseproject_tp\CourseProject_TP\obj\Release\net5.0-windows\
+c:\users\андрей\source\repos\courseproject_tp\courseproject_tp\CourseProject_TP\obj\Release\net5.0-windows\
 CourseProject_TP
 none
 false
 TRACE;RELEASE;NET;NET5_0;NETCOREAPP
-c:\users\андрей\source\repos\courseproject_tp1\courseproject_tp\CourseProject_TP\App.xaml
-7-478773752
+c:\users\андрей\source\repos\courseproject_tp\courseproject_tp\CourseProject_TP\App.xaml
+8-9259993
 
-202082926936
-226-637059745
-MainWindow.xaml;View\ClubView.xaml;View\GameSessionView.xaml;View\PlayerView.xaml;View\SideUpView.xaml;View\StartView.xaml;View\TournamentView.xaml;
+191999082870
+2261804695315
+MainWindow.xaml;View\ClubView.xaml;View\GameSessionView.xaml;View\OpeningView.xaml;View\PlayerView.xaml;View\SideUpView.xaml;View\StartView.xaml;View\TournamentView.xaml;
 
 True
 

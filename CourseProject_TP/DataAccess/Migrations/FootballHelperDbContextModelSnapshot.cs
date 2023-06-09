@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(FootballHelperDbContext))]
-    partial class FootballHelperContextModelSnapshot : ModelSnapshot
+    partial class FootballHelperDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -26,11 +26,16 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Название")
+                    b.Property<int?>("GameSessionEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GameSessionEntityId");
 
                     b.ToTable("Club");
                 });
@@ -68,13 +73,11 @@ namespace DataAccess.Migrations
                     b.Property<int?>("ClubEntityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ClubId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Имя")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Фамилия")
+                    b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -100,6 +103,13 @@ namespace DataAccess.Migrations
                     b.ToTable("Tournament");
                 });
 
+            modelBuilder.Entity("DataAccess.Entities.ClubEntity", b =>
+                {
+                    b.HasOne("DataAccess.Entities.GameSessionEntity", null)
+                        .WithMany("Clubs")
+                        .HasForeignKey("GameSessionEntityId");
+                });
+
             modelBuilder.Entity("DataAccess.Entities.GameSessionEntity", b =>
                 {
                     b.HasOne("DataAccess.Entities.TournamentEntity", null)
@@ -110,13 +120,18 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("DataAccess.Entities.PlayerEntity", b =>
                 {
                     b.HasOne("DataAccess.Entities.ClubEntity", null)
-                        .WithMany("Игроки")
+                        .WithMany("Players")
                         .HasForeignKey("ClubEntityId");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.ClubEntity", b =>
                 {
-                    b.Navigation("Игроки");
+                    b.Navigation("Players");
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.GameSessionEntity", b =>
+                {
+                    b.Navigation("Clubs");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.TournamentEntity", b =>

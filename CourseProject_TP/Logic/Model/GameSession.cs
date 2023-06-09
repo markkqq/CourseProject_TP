@@ -9,9 +9,11 @@ namespace Logic.Model
 {
     public class GameSession
     {
+        public int Id { get; set; }
         public Tournament Tournament { get; set; }
         public int FirstClubResult { get; set; }
         public int SecondClubResult { get; set; }
         public List<Club> Clubs { get; set; } = new List<Club>(2);
+        
     }
 }

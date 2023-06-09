@@ -20,7 +20,6 @@ namespace DataAccess.Entities
         {
             Name = item.Name;
             GameSessions = (from gamesession in item.GameSessions select new GameSessionEntity(gamesession)).ToList();
-
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
